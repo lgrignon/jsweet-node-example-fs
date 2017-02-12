@@ -16,6 +16,9 @@
 package org.jsweet.examples.node.fs;
 
 import static def.dom.Globals.console;
+import static def.node.Globals.process;
+import static def.node.util.Globals.inspect;
+import static jsweet.util.Globals.function;
 
 /**
  * Main class, Globals name ensures that the code will run in global context,
@@ -30,8 +33,28 @@ class Globals {
 
 		console.log("running JSweet + Node.JS FS example");
 
-		FileSystemReader fsReader = new FileSystemReader();
-		fsReader.readFile();
+		FileSystemAccess fs = new FileSystemAccess();
+		fs.printFileContent("test.txt");
+		fs.printFileContent("test2.csv");
+
+		final String writtenFilePath = "userInput.txt";
+		System.out.println("what do you want to write in " + process.cwd() + "/" + writtenFilePath);
+
+		process.stdin.resume();
+		process.stdin.setEncoding("utf8");
+
+		process.stdin.on("data", function(text -> {
+			process.stdin.pause();
+			String cleanText = inspect(text);
+			console.log("writing to " + process.cwd() + "/" + writtenFilePath + ": " + cleanText);
+
+			fs.writeFileContent(writtenFilePath, cleanText, () -> {
+
+				String writtenContent = fs.getFileContent(writtenFilePath);
+
+				System.out.println("thanks! file has been written, the content is: \n" + writtenContent);
+			});
+		}));
 	}
 
 }
