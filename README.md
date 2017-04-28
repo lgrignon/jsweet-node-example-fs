@@ -16,7 +16,7 @@ Just build it using the regular mvn command line:
 Once built: 
 ```
 > cd build
-> node server/Main.js
+> node org/jsweet/examples/node/fs/Main.js
 ```
 
 Then, open http://localhost:8000 in a browser.
@@ -25,3 +25,10 @@ Then, open http://localhost:8000 in a browser.
 
 The `node` and `npm` executables must be in the path (https://nodejs.org).
 Install Maven (https://maven.apache.org/install.html).
+
+## Other node examples
+This example belongs to a suite of examples using JSweet 2 + Node.js:
+* https://github.com/lgrignon/jsweet-node-example
+* https://github.com/lgrignon/jsweet-node-example-simple-http
+* https://github.com/lgrignon/jsweet-node-example-fs
+
