@@ -18,7 +18,7 @@ package org.jsweet.examples.node.fs;
 import static def.dom.Globals.console;
 import static def.node.Globals.process;
 import static def.node.util.Globals.inspect;
-import static jsweet.util.Globals.function;
+import static jsweet.util.Lang.function;
 
 /**
  * Main class, Globals name ensures that the code will run in global context,
